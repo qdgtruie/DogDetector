@@ -11,7 +11,7 @@ import time
 import cv2
 import os
 import ImageSize
-from reward import Reward
+from Reward import Reward
 import datetime
 from Motor import ServoMotor
 import argparse
@@ -40,7 +40,7 @@ MODEL_PATH = "hookie.model"
 
 path = './haarcascade_frontalface_default.xml'
 if(not os.path.exists(path)):
-    raise "haar topology file not found"
+    raise Exception("haar topology file not found")
 
 
 
@@ -114,9 +114,6 @@ if __name__ == '__main__':
    motor.setup()
    try:
         TTS = Reward()
-        #motor = ServoMotor()
-        #init_motor()
-        #rotate_motor()
         motor.loopOnce()
         #motor.Standby()
         # load the model

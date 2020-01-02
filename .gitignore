@@ -131,3 +131,6 @@ dmypy.json
 #intellij specific
 .idea
 *.iml
+
+#specific local file
+welcome.mp3

@@ -1,3 +1,6 @@
-imutil==0.5.3
-imagesiz==1.2.0
+imutils==0.5.3
+ImageSize==1.2.0
 Keras==2.3.1
+gTTS==2.1.0
+pygame==1.9.6
+opencv-python==4.1.2.30

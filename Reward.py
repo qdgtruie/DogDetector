@@ -1,11 +1,10 @@
-import os
-import time
-from gtts import gTTS
-from io import BytesIO
-from pygame import mixer
-import time
-import pygame
 import random
+import time
+
+import pygame
+from gtts import gTTS
+from pygame import mixer
+
 
 class Reward :
 
@@ -40,3 +39,11 @@ class Reward :
         audio_file="welcome.mp3"
         tts_en.save(audio_file)
         self.playsound(audio_file)
+
+
+if __name__ == '__main__':
+    try:
+        TTS = Reward()
+        TTS.sentence()
+    finally:
+        print("[INFO] existing Reward test ...")
