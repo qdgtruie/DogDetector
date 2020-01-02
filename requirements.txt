@@ -4,3 +4,4 @@ gTTS==2.1.0
 pygame==1.9.6
 opencv-python==4.1.2.30
 scikit-learn==0.22
+tensorflow
