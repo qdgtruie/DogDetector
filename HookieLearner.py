@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # import the necessary packages
 from keras.preprocessing.image import ImageDataGenerator
 from keras.optimizers import Adam
@@ -18,7 +20,7 @@ import MetaParams
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
 ap.add_argument("-d", "--dataset", required=True,
-                help="path to input dataset")
+                help="path to input dataset", default="./images")
 ap.add_argument("-m", "--model", required=True,
                 help="path to output model")
 ap.add_argument("-p", "--plot", required=False,
