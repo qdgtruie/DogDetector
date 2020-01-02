@@ -1,1 +1,0 @@
-DESTINATION_FOLDER='Downloads/images/full'

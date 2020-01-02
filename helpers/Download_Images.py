@@ -4,7 +4,7 @@ import argparse
 import requests
 import cv2
 import os
-import ImagePaths
+import helpers.ImageConfig
 
 
 
@@ -13,7 +13,7 @@ ap = argparse.ArgumentParser()
 ap.add_argument("-u", "--urls", required=True,
                 help="path to file containing image URLs", default="urls.txt")
 ap.add_argument("-o", "--output", required=True,
-                help="path to output directory of images", default=ImagePaths.DESTINATION_FOLDER)
+                help="path to output directory of images", default=helpers.ImageConfig.DESTINATION_FOLDER)
 args = vars(ap.parse_args())
 
 print("READY TO GO")
