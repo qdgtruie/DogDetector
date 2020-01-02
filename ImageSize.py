@@ -1,0 +1,2 @@
+HEIGHT = 38
+WIDTH = 38

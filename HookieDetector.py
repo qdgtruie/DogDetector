@@ -115,7 +115,7 @@ if __name__ == '__main__':
    try:
         TTS = Reward()
         motor.loopOnce()
-        #motor.Standby()
+
         # load the model
         print("[INFO] loading model...")
         model = load_model(MODEL_PATH)
@@ -123,7 +123,7 @@ if __name__ == '__main__':
         # initialize the video stream and allow the camera sensor to warm up
         print("[INFO] starting video stream...")
         vs = VideoStream(src=0).start()
-        # vs = VideoStream(usePiCamera=True).start()
+
         time.sleep(2.0)
 
         # loop over the frames from the video stream
@@ -139,7 +139,7 @@ if __name__ == '__main__':
             label = "Not Hookie"
             proba = notHookie
 
-            # check to see if hookie was detected using our convolutional neural network
+            # check to see if Hookie was detected using our convolutional neural network
             if hookie > notHookie:
 
                 # update the label and prediction probability
@@ -152,10 +152,9 @@ if __name__ == '__main__':
                 # check to see if we should raise the Hookie alarm
                 if not HOOKIE_FOUND and TOTAL_CONSEC >= TOTAL_THRESH:
 
-                    HOOKIE_FOUND = True # indicate that hookie has been found
-                    motor.loopOnce()
-                    #motor.Standby()
-                    #ActionateMotor(LAST_SEEN, True)
+                    HOOKIE_FOUND = True # indicate that Hookie has been found
+                    #motor.loopOnce()
+                    ActionateMotor(LAST_SEEN, True)
                     PlaySentence(TTS,LAST_SEEN, False)
                     
 
