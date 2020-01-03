@@ -10,6 +10,9 @@ Small 3D printed prototype leveraging machine learning to build a treat dispense
 * Keras with a TensorFlow backend
 * a custom keras model has been design for the task (see ```ModelBuilder.py```)
 
+##### Model description #####
+<img src="https://raw.githubusercontent.com/qdgtruie/DogDetector/master/model.png" width="300">
+
 ### Creating dataset  from your CLI ###
 run ```sh helpers/Download_Images.py``` from CLI 
 
