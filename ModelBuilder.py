@@ -9,6 +9,7 @@ from keras import backend as K
 
 from keras.utils import plot_model
 
+
 class ModelBuilder:
 
     @staticmethod
@@ -46,8 +47,11 @@ if __name__ == '__main__':
     try:
         from ModelBuilder import ModelBuilder as Builder
         import ImageSize
+
         net = Builder()
-        model = net.build(width=ImageSize.WIDTH, height=ImageSize.HEIGHT, depth=3, classes=2)
-        plot_model(model, to_file='model.png',show_shapes=True,show_layer_names=True,expand_nested=False,dpi=96 )
+        model = net.build(width=ImageSize.WIDTH, height=ImageSize.HEIGHT,
+                          depth=3, classes=2)
+        plot_model(model, to_file='model.png', show_shapes=True,
+                   show_layer_names=True, expand_nested=False, dpi=96)
     finally:
         print("[INFO] existing ModelBuilder test ...")

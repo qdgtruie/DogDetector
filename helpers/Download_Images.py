@@ -8,22 +8,21 @@ import cv2
 import os
 import helpers.ImageConfig
 
-
-
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
 ap.add_argument("-u", "--urls", required=True,
                 help="path to file containing image URLs", default="urls.txt")
 ap.add_argument("-o", "--output", required=True,
-                help="path to output directory of images", default=helpers.ImageConfig.DESTINATION_FOLDER)
+                help="path to output directory of images",
+                default=helpers.ImageConfig.DESTINATION_FOLDER)
 args = vars(ap.parse_args())
 
 print("READY TO GO")
 
-if not os.path.isdir(args["output"]) :
+if not os.path.isdir(args["output"]):
     os.makedirs(args["output"])
     print("Creating directory "+args["output"])
-else :
+else:
     print("Reusing directory "+args["output"])
 
 # grab the list of URLs from the input file, then initialize the
@@ -76,4 +75,3 @@ for imagePath in paths.list_images(args["output"]):
     if delete:
         print("[INFO] deleting {}".format(imagePath))
         os.remove(imagePath)
-

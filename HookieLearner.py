@@ -39,7 +39,6 @@ random.shuffle(imagePaths)
 
 print("loop over the input images")
 
-
 for imagePath in imagePaths:
     # load the image, pre-process it, and store it in the data list
     image = cv2.imread(imagePath)
@@ -53,8 +52,7 @@ for imagePath in imagePaths:
     label = imagePath.split(os.path.sep)[-2]
     labelFlag = 1 if label == "hookie" else 0
     labels.append(labelFlag)
-    print(" Image "+imagePath+" classified as "+label)
-
+    print(" Image " + imagePath + " classified as " + label)
 
 # scale the raw pixel intensities to the range [0, 1]
 data = np.array(data, dtype="float") / 255.0
@@ -70,22 +68,24 @@ testY = to_categorical(testY, num_classes=2)
 
 # construct the image generator for data augmentation
 aug = ImageDataGenerator(rotation_range=30, width_shift_range=0.1,
-                         height_shift_range=0.1, shear_range=0.2, zoom_range=0.2,
-                         horizontal_flip=True, fill_mode="nearest")
-
+                         height_shift_range=0.1, shear_range=0.2,
+                         zoom_range=0.2, horizontal_flip=True,
+                         fill_mode="nearest")
 
 net = ModelBuilder()
 
 # initialize the model
 print("[INFO] compiling model...")
-model = net.build(width=ImageSize.WIDTH, height=ImageSize.HEIGHT, depth=3, classes=2)
+model = net.build(width=ImageSize.WIDTH, height=ImageSize.HEIGHT,
+                  depth=3, classes=2)
 opt = Adam(lr=MetaParams.INIT_LR, decay=MetaParams.INIT_LR / MetaParams.EPOCHS)
 model.compile(loss="binary_crossentropy", optimizer=opt, metrics=["accuracy"])
 
 # train the network
 print("[INFO] training network...")
 H = model.fit_generator(aug.flow(trainX, trainY, batch_size=MetaParams.BS),
-                        validation_data=(testX, testY), steps_per_epoch=len(trainX) // MetaParams.BS,
+                        validation_data=(testX, testY),
+                        steps_per_epoch=len(trainX) // MetaParams.BS,
                         epochs=MetaParams.EPOCHS, verbose=1)
 
 # save the model to disk
@@ -102,7 +102,6 @@ plt.plot(np.arange(0, N), H.history["acc"], label="train_acc")
 plt.plot(np.arange(0, N), H.history["val_acc"], label="val_acc")
 plt.title("Training Loss and Accuracy on Hookie/Not Hookie")
 plt.xlabel("Epoch #")
-plt.ylabel("Loss/Accuracy")#
+plt.ylabel("Loss/Accuracy")  #
 plt.legend(loc="lower left")
 plt.savefig(args["plot"])
-
